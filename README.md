@@ -140,3 +140,4 @@ Response:
 | mcts_nodes | 10-40 | 20 | MCTS child nodes |
 | resolution | 1000-10000 | 2000 | Sampling resolution |
 | seed | 0+ | 0 | Random seed (0 = random) |
+# coacd-backend
