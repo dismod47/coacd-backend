@@ -152,16 +152,16 @@ async def decompose(request: DecomposeRequest):
 
         # Run CoACD decomposition
         # Following: parts = coacd.run_coacd(mesh)
-        # With parameters based on their CLI documentation
+        # Parameter names match CoACD Python API (singular forms)
         parts = coacd.run_coacd(
             mesh,
             threshold=params.threshold,
             max_convex_hull=params.max_convex_hull,
             preprocess_mode=params.preprocess_mode,
-            preprocess_resolution=params.preprocess_resolution,
-            mcts_iterations=params.mcts_iterations,
-            mcts_depth=params.mcts_depth,
-            mcts_nodes=params.mcts_nodes,
+            prep_resolution=params.preprocess_resolution,
+            mcts_iteration=params.mcts_iterations,
+            mcts_max_depth=params.mcts_depth,
+            mcts_node=params.mcts_nodes,
             resolution=params.resolution,
             seed=params.seed if params.seed != 0 else None
         )
