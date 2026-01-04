@@ -152,19 +152,10 @@ async def decompose(request: DecomposeRequest):
 
         # Run CoACD decomposition
         # Following: parts = coacd.run_coacd(mesh)
-        # Parameter names match CoACD Python API (singular forms)
-        parts = coacd.run_coacd(
-            mesh,
-            threshold=params.threshold,
-            max_convex_hull=params.max_convex_hull,
-            preprocess_mode=params.preprocess_mode,
-            prep_resolution=params.preprocess_resolution,
-            mcts_iteration=params.mcts_iterations,
-            mcts_max_depth=params.mcts_depth,
-            mcts_node=params.mcts_nodes,
-            resolution=params.resolution,
-            seed=params.seed if params.seed != 0 else None
-        )
+        # Use only threshold parameter which is guaranteed to work
+        # Other parameters use CoACD defaults
+        logger.info(f"Running CoACD with threshold={params.threshold}")
+        parts = coacd.run_coacd(mesh, threshold=params.threshold)
 
         logger.info(f"CoACD produced {len(parts)} convex hulls")
 
